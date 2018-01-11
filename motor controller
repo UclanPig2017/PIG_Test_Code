@@ -1,0 +1,21 @@
+% Luke psuedocode for motor controller
+
+pwm signal to the controller from the micro
+
+set pwm signal to equal desired speed
+
+set ADC converter 
+
+if(pwm=5mv)
+  send level of voltage to motor 
+  
+  else (pwm=10mv)
+    up voltage sent to the motor to change speed 
+  
+  
+  feedback form the motor to keep stable speed before stepping
+  
+  return speed allow tolerence 5% to stay in current voltage to motor
+  
+  have option of low pwm signal to initilaise reverse (not critical)
+  
