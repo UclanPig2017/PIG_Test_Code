@@ -8,6 +8,12 @@ Determine Blob colour to detect
   
 Determine blob size threshold
   (min x,y,u,v)
+  
+Determine Edge colour to detect
+  (R,G,B) values
+  
+Determine Edge Sharpness threshold
+  (min x,y,u,v)
 
 On GUI:
   subscribe colorgui to image topic
@@ -15,5 +21,6 @@ On GUI:
 cmvision:
   subscribes to image topic
   publishes blobs topic
+  publishes edge topic
   
-paths for the image, colours, blob sizes
+paths for the image, colours, blob sizes, edges
