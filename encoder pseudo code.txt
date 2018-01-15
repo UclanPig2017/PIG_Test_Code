@@ -1,0 +1,78 @@
+﻿/*
+        Name: Encoder pseudo code
+        Author: Ian T
+Version: 1.0        
+Variables
+//all variables that end in 1 are driven wheels, all that end in 2 are undriven wheels. I.e pod1_calc1 is driven, pod1_calc2 is undriven.
+
+
+int pod1_calc1, pod1_calc2, pod2_calc1, pod2_calc2, pod3_calc1, pod3_calc2, //conversion calculation for input to binary
+
+
+pod1_dist1, pod1_dist2, pod2_dist1, pod2_dist2, pod3_dist1, pod3_dist2,                                 //measured distance        
+
+
+pod1_CDist1, pod1_CDist2, pod2_CDist1, pod2_CDist2, pod3_CDist1, pod3_CDist2,         //comparitor distances
+
+
+pod1_totdist1, pod1_totdist2, pod2_totdist1, pod2_totdist2, pod3_totdist1,pod3_totdist2; // total distance for each encoder
+
+
+
+
+Changelog:
+* Version x.x
+                Removed Herobrine
+*/
+
+
+/*
+        Name: funcAdd
+        Para: integers x, y
+        Desc: Adds input variables x and y, returns integer result
+*/
+
+
+
+
+Int main
+{
+        Init clock
+        Init pins
+        
+        Read pins
+        Convert reading to binary
+        Convert binary to degrees
+        Convert degrees to distance
+        Set comparator variables to last read distance
+
+
+Compare values to other encoders
+
+
+Error handling
+
+
+        if(last read distance is != current distance) // do this for each encoder
+        {
+                Increase total distance by distance moved
+                Set comparator distance to same as current distance
+}
+
+
+If(one wheel not equal to other two)
+{
+                Diff wheel = equal other wheels
+}
+
+
+if(all wheels different)
+{
+        Average all wheels
+}
+
+
+
+
+output
+}
