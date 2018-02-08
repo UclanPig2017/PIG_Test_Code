@@ -1,0 +1,45 @@
+Network:
+Master:
+Ssh PIG
+Roscore
+
+New terminal
+Ssh PIG
+export ROS_MASTER_URI=http://PIG:11311
+
+
+New Terminal
+Rviz
+[
+Global options: fixed frame -> laser
+Add laser scan
+Add image
+]
+
+Slave:
+Lidar:
+Navigate to driver folder
+Initialise setup(.bash)
+Ssh odroid
+export ROS_MASTER_URI=http://PIG:11311
+Roslaunch rplidar_ros rplidar.launch
+
+Camera 1:
+Nav to camera driver
+Initialise setup(.bash)
+Ssh odroid
+export ROS_MASTER_URI=http://PIG:11311
+Rosrun cv_camera cv_camera_node
+
+Camera2:
+Nav to camera driver
+Initialise setup(.bash)
+Ssh odroid
+export ROS_MASTER_URI=http://PIG:11311
+Rosrun usb_cam usb_cam_node
+
+Record:
+Ssh odroid
+export ROS_MASTER_URI=http://PIG:11311
+Rosbag record -a
+
