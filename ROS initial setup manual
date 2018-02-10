@@ -1,0 +1,104 @@
+Communication between the main user interface terminal and the subsystems utilise a local network to share data between the computers on board the Pipe Inspection Gauge. The individual systems can be accessed from the user interface terminal using the ssh command:
+
+ssh odroid@<system_name>
+	
+
+This allows for each of the systems to be updated and for additional functionality to be added more easily without the need to completely dismantle the unit.
+
+Initial Setup:
+The user interface terminal will serve as the master in the system to set this up run the command:
+
+ssh PIG
+
+Then enter the password (default password= [space])
+Once this is completed run the command:
+
+roscore 
+
+Now roscore is running and a new terminal is required 
+
+[ctrl]+[alt]+[t]
+
+In the new terminal run:
+
+	ssh PIG
+	export ROS_MASTER_URI=http://PIG:11311
+
+This command sets the master connection setting for the rest of the system to connect
+
+Open a new terminal again [ctrl]+[alt]+[T]
+This is where the GUI will be started
+
+In the new terminal run:
+
+	rvis
+
+This will open a new window called rvis and this is where the images will show from the PIG
+
+
+
+
+
+
+Open a new terminal[ctrl]+[alt]+[T]
+In this terminal connect to the vision system and run the first camera
+	
+	ssh odroid@camdar
+	Enter vision system password (default: odroid)
+	export ROS_MASTER_URI=http://PIG:11311
+	cd ~/CameraDriver1/
+	source devel/setup.bash
+	rosrun cv_camera cv_camera_node
+
+Open a new terminal [ctrl]+[alt]+[T]
+This terminal will also connect to the vision system and will run the second camera
+	
+	ssh odroid@camdar
+	Enter vision system password (default: odroid)
+	export ROS_MASTER_URI=http://PIG:11311
+	cd ~/usb_cam/
+	source devel/setup.bash
+	rosrun usb_cam usb_cam_node
+
+Open a new terminal [ctrl]+[alt]+[T]
+This terminal will initialise the lidar system
+
+	ssh odroid@camdar
+	Enter vision system password(default: odroid)
+	export ROS_MASTER_URI=http://PIG:11311
+	cd ~/LidarDriver/
+	source devel/setup.bash
+	roslaunch rplidar_ros rplidar.launch
+
+Now all topics should be open open a new terminal and run the command:
+
+	rostopic list
+
+This should show all topics, the ones to look for are:
+
+	/scan
+	/
+
+Navigate back to the rviz window
+	
+	Click [add] -> [by topic] ->[rplidar]-> [/scan]
+	Click [add]->[by topic]->[cv_camera]->[image]
+	Click [add]->[by topic]->[usb_cam]->[image]
+	
+
+Change the [world]->[fixed frame] to
+
+Laser
+
+All vision systems should now be visible and working in the rviz GUI
+
+To record the data locally (on the vision system hard drive) 
+Open a new terminal [ctrl]+[alt]+[T]
+
+	ssh odroid@camdar
+ 	Enter password (default: odroid)
+	export ROS_MASTER_URI=http://PIG:11311
+	rosbag record -a
+
+Note: use [ctrl]+[C] in any terminal to close the topic when required.
+
