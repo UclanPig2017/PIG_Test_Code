@@ -54,7 +54,7 @@
 */
 
 /* Private variables ---------------------------------------------------------*/
-uint32_t ADC_TmpRead[4];
+uint32_t ADC_TmpRead[5];
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
@@ -74,7 +74,7 @@ int main(void)
   MX_ADC1_Init();
 	MX_USART2_UART_Init();
 
-	HAL_ADC_Start_DMA(&hadc1, (uint32_t*) ADC_TmpRead, 4); //DMA ADC Reads activated
+	HAL_ADC_Start_DMA(&hadc1, (uint32_t*) ADC_TmpRead, 5); //DMA ADC Reads activated
   
 	/* Infinite loop */
 	
@@ -93,6 +93,10 @@ int main(void)
 			sprintf(Output_String, "Sensor %d Reading: %2.2f ", i, ADC_TempVal[i]);
 			UART_send(Output_String);
 		}
+		
+		ADC_Voltage[i] = ((ADC_TmpRead[i]*ADC_Resolution)/Ref_Voltage);
+		sprintf(Output_String, "Sensor %d Reading: %2.2f ", i, ADC_TempVal[i]);
+		UART_send(Output_String);
   }
 }
 
