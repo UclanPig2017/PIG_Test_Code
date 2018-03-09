@@ -1,0 +1,4 @@
+load STM32F303RETx 
+project name STCubeGenerated 
+project toolchain "MDK-ARM V5" 
+project path "\\DEV-HA\Redirected_Folders\BPurkiss\Documents\halleffectsensor\RTE\Device\STM32F303RETx\" 
