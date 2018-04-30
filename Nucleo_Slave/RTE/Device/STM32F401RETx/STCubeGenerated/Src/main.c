@@ -3,10 +3,13 @@
   * File Name          : main.c
   * Description        : Main program body
 	* User Code by			 : Sulaymaan Shaikh, Luke Jackson, Edward Lobley, Ian Taylor,
-	*											 Ben Purkiss, Tom Harrison
-	* Version						 : 0.1
+	*											 Tom Harrison
+	* Version						 : 0.2
 	*
 	* Changelog:
+	*						0.2:
+	*							- Changed UART Peripheral to SPI Peripheral after clarification talks
+	*
 	*						0.1:
 	*							- Added Initial Code Structure, Thread + Peripheral Initialisation
 	*						  - Added some written code
@@ -55,6 +58,7 @@
 /* Private variables ---------------------------------------------------------*/
 ADC_HandleTypeDef hadc1;
 DMA_HandleTypeDef hdma_adc1;
+SPI_HandleTypeDef hspi3;
 UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
@@ -71,6 +75,7 @@ static void MX_GPIO_Init(void);
 static void MX_DMA_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_USART1_UART_Init(void);
+static void MX_SPI3_Init(void);
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
@@ -87,6 +92,7 @@ uint32_t HAL_GetTick(void) {           // Add HAL_GetTick function for STM32Cube
 
 int main(void)
 {
+
   /* USER CODE BEGIN 1 */
 	osKernelInitialize ();               // Initialize RTOS Kernel for setup
   /* USER CODE END 1 */
@@ -112,6 +118,7 @@ int main(void)
   MX_DMA_Init();
   MX_ADC1_Init();
   MX_USART1_UART_Init();
+  MX_SPI3_Init();
 
   /* USER CODE BEGIN 2 */
 	/** Tasks:
@@ -255,6 +262,29 @@ static void MX_ADC1_Init(void)
   sConfig.Channel = ADC_CHANNEL_7;
   sConfig.Rank = 3;
   if (HAL_ADC_ConfigChannel(&hadc1, &sConfig) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
+
+}
+
+/* SPI3 init function */
+static void MX_SPI3_Init(void)
+{
+
+  /* SPI3 parameter configuration*/
+  hspi3.Instance = SPI3;
+  hspi3.Init.Mode = SPI_MODE_SLAVE;
+  hspi3.Init.Direction = SPI_DIRECTION_2LINES;
+  hspi3.Init.DataSize = SPI_DATASIZE_8BIT;
+  hspi3.Init.CLKPolarity = SPI_POLARITY_LOW;
+  hspi3.Init.CLKPhase = SPI_PHASE_1EDGE;
+  hspi3.Init.NSS = SPI_NSS_SOFT;
+  hspi3.Init.FirstBit = SPI_FIRSTBIT_MSB;
+  hspi3.Init.TIMode = SPI_TIMODE_DISABLE;
+  hspi3.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+  hspi3.Init.CRCPolynomial = 10;
+  if (HAL_SPI_Init(&hspi3) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
   }

@@ -2,12 +2,14 @@
   ******************************************************************************
   * @file    stm32f4xx_it.c
   * @brief   Interrupt Service Routines.
-	* User Code by			 : Sulaymaan Shaikh, Luke Jackson, Edward Lobley, Ian Taylor
-	* Version						 : 0.1
-	*
-	* Changelog:
-	*						0.1:
-	*							- Added Existing Interrupt code
+  * User Code by       : Sulaymaan Shaikh, Luke Jackson, Edward Lobley, Ian Taylor
+  * Version	       		 : 0.2
+  *
+  * Changelog:
+  *						0.2:
+  *							- Changed UART to SPI after clarification talks
+  *						0.1:
+  *							- Added Existing Interrupt code
   ******************************************************************************
   *
   * COPYRIGHT(c) 2018 STMicroelectronics
@@ -42,11 +44,18 @@
 #include "stm32f4xx_it.h"
 
 /* USER CODE BEGIN 0 */
+/************************************************************************
+*																																				*
+* 	NOTE: AFTER REGENERATING CODE, REMOVE THE SYSTICK HANDLER 					*
+*																																				*
+*************************************************************************/
+
 extern uint8_t rxBuf[1];
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
 extern DMA_HandleTypeDef hdma_adc1;
+extern SPI_HandleTypeDef hspi3;
 extern UART_HandleTypeDef huart1;
 
 /******************************************************************************/
@@ -146,6 +155,20 @@ void EXTI15_10_IRQHandler(void)
   /* USER CODE BEGIN EXTI15_10_IRQn 1 */
 
   /* USER CODE END EXTI15_10_IRQn 1 */
+}
+
+/**
+* @brief This function handles SPI3 global interrupt.
+*/
+void SPI3_IRQHandler(void)
+{
+  /* USER CODE BEGIN SPI3_IRQn 0 */
+
+  /* USER CODE END SPI3_IRQn 0 */
+  HAL_SPI_IRQHandler(&hspi3);
+  /* USER CODE BEGIN SPI3_IRQn 1 */
+
+  /* USER CODE END SPI3_IRQn 1 */
 }
 
 /**

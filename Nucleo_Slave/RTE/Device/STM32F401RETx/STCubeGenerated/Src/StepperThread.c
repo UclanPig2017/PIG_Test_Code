@@ -61,7 +61,7 @@ void StepperControl (void const *argument)
 		}
 	
 		//If idling, yield thread
-		if (!pigStatus)
+		while(!pigStatus)
 		{
 			osThreadYield();
 		}

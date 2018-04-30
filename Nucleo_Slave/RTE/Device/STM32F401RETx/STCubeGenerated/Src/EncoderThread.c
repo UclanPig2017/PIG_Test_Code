@@ -49,7 +49,7 @@ void EncoderRead (void const *argument)
 	while(1)
 	{	
 		//If idling, yield thread
-		if (!pigStatus)
+		while(!pigStatus)
 		{
 			osThreadYield();
 		}

@@ -1,0 +1,60 @@
+CHANGELOGS:
+--main.c--
+/**
+  ******************************************************************************
+  * File Name          : main.c
+  * Description        : Main program body
+  * User Code by       : Sulaymaan Shaikh, Luke Jackson, Edward Lobley, Ian Taylor,
+  *			 Tom Harrison
+  * Version	       : 0.2
+  *
+  * Changelog:
+  *		0.2:
+  *		- Changed UART Peripheral to SPI Peripheral after clarification talks
+  *		0.1:
+  *		- Added Initial Code Structure, Thread + Peripheral Initialisation
+  *		- Added some written code
+  ******************************************************************************
+
+--stm32fxx_it.c--
+/**
+  ******************************************************************************
+  * @file    stm32f4xx_it.c
+  * @brief   Interrupt Service Routines.
+  * User Code by       : Sulaymaan Shaikh, Luke Jackson, Edward Lobley, Ian Taylor
+  * Version	       : 0.2
+  *
+  * Changelog:
+  *		0.2:
+  *		- Changed UART to SPI after clarification talks
+  *		0.1:
+  *		- Added Existing Interrupt code
+  ******************************************************************************
+
+--EncoderThread.c--
+/**
+  ******************************************************************************
+  * File Name          : EncoderThread.c
+  * Description        : Encoder Reading Code
+  * User Code by       : Tom Harrison, Ian Taylor, Sulaymaan Shaikh
+  * Version	       : 0.1
+  *
+  * Changelog:
+  *		0.1:
+  *		- Added Thread Init Code
+  ******************************************************************************
+*/
+
+--StepperThread.c
+/**
+  ******************************************************************************
+  * File Name          : StepperThread.c
+  * Description        : Encoder Reading Code
+  * User Code by       : <add names here>, Sulaymaan Shaikh
+  * Version	       : 0.1
+  *
+  * Changelog:
+  *		0.1:
+  *		- Added Thread Init Code
+  ******************************************************************************
+*/
