@@ -1,0 +1,25 @@
+//variables
+	txbuff[0] =0x3D;  //put in address to send too
+	txbuff[1] =0x0C;  //data to send		
+	
+HAL_Delay(2000);
+	
+HAL_I2C_Master_Transmit(&hi2c2, 0x28<<1, txbuff, 2, 10000);  // set imu mode
+	
+HAL_Delay(1000);
+
+
+HAL_I2C_Master_Transmit(&hi2c2, 0x28<<1ul, txbuff, 1, 10000); // request data(handler type def, IMU address, data, sata size(one bite), timeout)
+		
+HAL_Delay(5);
+		
+HAL_I2C_Master_Receive(&hi2c2, 0x28<<1ul, rxbuff, 6, 10000); //recieve data
+		
+HAL_Delay(5);
+		
+
+ybit= rxbuff[3]<<8 | rxbuff[2]; 
+zbit= rxbuff[5]<<8 | rxbuff[4];
+		
+y= ybit/16;
+z= zbit/16;
