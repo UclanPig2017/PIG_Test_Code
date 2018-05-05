@@ -108,7 +108,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-		if ((!(!(limit1) & !(limit2) & !(limit4))) && (!((!(limit13) & !(limit14) & !(limit15)))))
+		if (!(!limit1 | !limit2 | !limit4 | !limit13 | !limit14 | !limit15))
 		{
 		//State Machine for driving step magnets
 		switch (state) 

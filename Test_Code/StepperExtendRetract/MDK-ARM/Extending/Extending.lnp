@@ -1,4 +1,4 @@
---cpu Cortex-M4.fp
+--cpu=Cortex-M4.fp
 "extending\system_stm32f4xx.o"
 "extending\startup_stm32f401xe.o"
 "extending\stm32f4xx_hal_pwr_ex.o"
@@ -20,6 +20,6 @@
 "extending\stm32f4xx_it.o"
 "extending\stm32f4xx_hal_msp.o"
 --library_type=microlib --strict --scatter "Extending\Extending.sct"
---diag_suppress=L6329 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--diag_suppress=L6329 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list "Extending.map" -o Extending\Extending.axf
