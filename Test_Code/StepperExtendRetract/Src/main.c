@@ -66,7 +66,6 @@ static void MX_USART2_UART_Init(void);
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
-
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
@@ -108,7 +107,11 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-		if (!(!limit1 | !limit2 | !limit4 | !limit13 | !limit14 | !limit15))
+		if ((!limit1 | !limit2 | !limit4) && (!stepDir))
+		{;}
+		else if ((!limit13 | !limit14 | !limit15) && (stepDir))
+		{;}	
+		else
 		{
 		//State Machine for driving step magnets
 		switch (state) 
@@ -346,7 +349,6 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-
 /* USER CODE END 4 */
 
 /**
