@@ -1,0 +1,27 @@
+--cpu Cortex-M4.fp
+"adc_dma_test\stm32f4xx_hal_cortex.o"
+"adc_dma_test\stm32f4xx_hal.o"
+"adc_dma_test\stm32f4xx_hal_pwr_ex.o"
+"adc_dma_test\stm32f4xx_hal_dma_ex.o"
+"adc_dma_test\stm32f4xx_hal_rcc_ex.o"
+"adc_dma_test\stm32f4xx_hal_dma.o"
+"adc_dma_test\stm32f4xx_hal_flash_ramfunc.o"
+"adc_dma_test\stm32f4xx_hal_rcc.o"
+"adc_dma_test\stm32f4xx_hal_uart.o"
+"adc_dma_test\stm32f4xx_hal_adc.o"
+"adc_dma_test\stm32f4xx_hal_gpio.o"
+"adc_dma_test\stm32f4xx_hal_adc_ex.o"
+"adc_dma_test\stm32f4xx_hal_pwr.o"
+"adc_dma_test\stm32f4xx_hal_tim.o"
+"adc_dma_test\stm32f4xx_hal_flash_ex.o"
+"adc_dma_test\stm32f4xx_hal_tim_ex.o"
+"adc_dma_test\stm32f4xx_hal_flash.o"
+"adc_dma_test\startup_stm32f401xe.o"
+"adc_dma_test\main.o"
+"adc_dma_test\stm32f4xx_hal_msp.o"
+"adc_dma_test\stm32f4xx_it.o"
+"adc_dma_test\system_stm32f4xx.o"
+--library_type=microlib --strict --scatter "ADC_DMA_Test\ADC_DMA_Test.sct"
+--diag_suppress=L6329 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "ADC_DMA_Test.map" -o ADC_DMA_Test\ADC_DMA_Test.axf

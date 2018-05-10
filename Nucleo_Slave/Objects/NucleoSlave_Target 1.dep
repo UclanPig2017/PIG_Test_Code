@@ -137,7 +137,7 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\In
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x5730C5D0)
 I (C:\Users\Sulaymaan\Documents\GitHub\Pig_Test_Code\Nucleo_Slave\RTE\Device\STM32F401RETx\STCubeGenerated\Inc\stm32f4xx_it.h)(0x5AE74AA8)
 F (C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\RTOS\RTX\LIB\ARM\RTX_CM4.lib)(0x5624BF76)()
-F (RTE\CMSIS\RTX_Conf_CM.c)(0x5AE5E512)(-c --cpu Cortex-M4.fp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-IC:\Users\Sulaymaan\Documents\GitHub\Pig_Test_Code\Nucleo_Slave\RTE-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\RTOS\RTX\INC-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc-IC:\Users\Sulaymaan\Documents\GitHub\Pig_Test_Code\Nucleo_Slave\RTE\Device\STM32F401RETx-IC:\Users\Sulaymaan\Documents\GitHub\Pig_Test_Code\Nucleo_Slave\RTE\Device\STM32F401RETx\STCubeGenerated\Inc-ISTCubeGenerated\Inc-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F401xE --C99-o .\objects\rtx_conf_cm.o --omf_browse .\objects\rtx_conf_cm.crf --depend .\objects\rtx_conf_cm.d)
+F (RTE\CMSIS\RTX_Conf_CM.c)(0x5AEAE4CA)(-c --cpu Cortex-M4.fp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-IC:\Users\Sulaymaan\Documents\GitHub\Pig_Test_Code\Nucleo_Slave\RTE-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\RTOS\RTX\INC-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc-IC:\Users\Sulaymaan\Documents\GitHub\Pig_Test_Code\Nucleo_Slave\RTE\Device\STM32F401RETx-IC:\Users\Sulaymaan\Documents\GitHub\Pig_Test_Code\Nucleo_Slave\RTE\Device\STM32F401RETx\STCubeGenerated\Inc-ISTCubeGenerated\Inc-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F401xE --C99-o .\objects\rtx_conf_cm.o --omf_browse .\objects\rtx_conf_cm.crf --depend .\objects\rtx_conf_cm.d)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\RTOS\RTX\INC\cmsis_os.h)(0x5627AA4E)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574EA096)
 I (C:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x574EA096)
@@ -494,6 +494,38 @@ I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\In
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h)(0x5730C5CE)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_spi.h)(0x5730C5D0)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x5730C5D0)
+F (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_spi.c)(0x573216FA)(-c --cpu Cortex-M4.fp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-IC:\Users\Sulaymaan\Documents\GitHub\Pig_Test_Code\Nucleo_Slave\RTE-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\RTOS\RTX\INC-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc-IC:\Users\Sulaymaan\Documents\GitHub\Pig_Test_Code\Nucleo_Slave\RTE\Device\STM32F401RETx-IC:\Users\Sulaymaan\Documents\GitHub\Pig_Test_Code\Nucleo_Slave\RTE\Device\STM32F401RETx\STCubeGenerated\Inc-ISTCubeGenerated\Inc-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F401xE --C99-o .\objects\stm32f4xx_hal_spi.o --omf_browse .\objects\stm32f4xx_hal_spi.crf --depend .\objects\stm32f4xx_hal_spi.d)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x5730C5CE)
+I (C:\Users\Sulaymaan\Documents\GitHub\Pig_Test_Code\Nucleo_Slave\RTE\Device\STM32F401RETx\STCubeGenerated\Inc\stm32f4xx_hal_conf.h)(0x5AE74AA9)
+I (C:\Users\Sulaymaan\Documents\GitHub\Pig_Test_Code\Nucleo_Slave\RTE\Device\STM32F401RETx\STCubeGenerated\Inc\main.h)(0x5AE74AA9)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h)(0x5730C5D0)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h)(0x5730C5D0)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x572C681E)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f401xe.h)(0x572C681E)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cm4.h)(0x5626197C)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574EA096)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmInstr.h)(0x562605C0)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\cmsis_armcc.h)(0x562605C0)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmFunc.h)(0x562605C0)
+I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmSimd.h)(0x562605C0)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x572C6820)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h)(0x5730C704)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x574EA096)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h)(0x5730C5D0)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h)(0x5730C5D0)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h)(0x5730C5D0)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma.h)(0x5730C5D0)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma_ex.h)(0x5730C5D0)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cortex.h)(0x5730C5CE)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_adc.h)(0x5730C5D0)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_adc_ex.h)(0x5730C5CE)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash.h)(0x5730C5D0)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ex.h)(0x5730C5CE)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ramfunc.h)(0x5730C5CE)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr.h)(0x5730C5D0)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h)(0x5730C5CE)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_spi.h)(0x5730C5D0)
+I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x5730C5D0)
 F (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_uart.c)(0x5730C5CC)(-c --cpu Cortex-M4.fp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-IC:\Users\Sulaymaan\Documents\GitHub\Pig_Test_Code\Nucleo_Slave\RTE-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\RTOS\RTX\INC-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc-IC:\Users\Sulaymaan\Documents\GitHub\Pig_Test_Code\Nucleo_Slave\RTE\Device\STM32F401RETx-IC:\Users\Sulaymaan\Documents\GitHub\Pig_Test_Code\Nucleo_Slave\RTE\Device\STM32F401RETx\STCubeGenerated\Inc-ISTCubeGenerated\Inc-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F401xE --C99-o .\objects\stm32f4xx_hal_uart.o --omf_browse .\objects\stm32f4xx_hal_uart.crf --depend .\objects\stm32f4xx_hal_uart.d)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x5730C5CE)
 I (C:\Users\Sulaymaan\Documents\GitHub\Pig_Test_Code\Nucleo_Slave\RTE\Device\STM32F401RETx\STCubeGenerated\Inc\stm32f4xx_hal_conf.h)(0x5AE74AA9)
@@ -569,35 +601,3 @@ I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\cmsis_armcc.h)(0x562605C0)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmFunc.h)(0x562605C0)
 I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmSimd.h)(0x562605C0)
 I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x572C6820)
-F (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_spi.c)(0x573216FA)(-c --cpu Cortex-M4.fp -D__RTX -D__EVAL -g -O0 --apcs=interwork --split_sections-IC:\Users\Sulaymaan\Documents\GitHub\Pig_Test_Code\Nucleo_Slave\RTE-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\RTOS\RTX\INC-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc-IC:\Users\Sulaymaan\Documents\GitHub\Pig_Test_Code\Nucleo_Slave\RTE\Device\STM32F401RETx-IC:\Users\Sulaymaan\Documents\GitHub\Pig_Test_Code\Nucleo_Slave\RTE\Device\STM32F401RETx\STCubeGenerated\Inc-ISTCubeGenerated\Inc-D__UVISION_VERSION="521" -D_RTE_ -DSTM32F401xE --C99-o .\objects\stm32f4xx_hal_spi.o --omf_browse .\objects\stm32f4xx_hal_spi.crf --depend .\objects\stm32f4xx_hal_spi.d)
-I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x5730C5CE)
-I (C:\Users\Sulaymaan\Documents\GitHub\Pig_Test_Code\Nucleo_Slave\RTE\Device\STM32F401RETx\STCubeGenerated\Inc\stm32f4xx_hal_conf.h)(0x5AE74AA9)
-I (C:\Users\Sulaymaan\Documents\GitHub\Pig_Test_Code\Nucleo_Slave\RTE\Device\STM32F401RETx\STCubeGenerated\Inc\main.h)(0x5AE74AA9)
-I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h)(0x5730C5D0)
-I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h)(0x5730C5D0)
-I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x572C681E)
-I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f401xe.h)(0x572C681E)
-I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cm4.h)(0x5626197C)
-I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574EA096)
-I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmInstr.h)(0x562605C0)
-I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\cmsis_armcc.h)(0x562605C0)
-I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmFunc.h)(0x562605C0)
-I (C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cmSimd.h)(0x562605C0)
-I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x572C6820)
-I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h)(0x5730C704)
-I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x574EA096)
-I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h)(0x5730C5D0)
-I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h)(0x5730C5D0)
-I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h)(0x5730C5D0)
-I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma.h)(0x5730C5D0)
-I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma_ex.h)(0x5730C5D0)
-I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cortex.h)(0x5730C5CE)
-I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_adc.h)(0x5730C5D0)
-I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_adc_ex.h)(0x5730C5CE)
-I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash.h)(0x5730C5D0)
-I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ex.h)(0x5730C5CE)
-I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ramfunc.h)(0x5730C5CE)
-I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr.h)(0x5730C5D0)
-I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h)(0x5730C5CE)
-I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_spi.h)(0x5730C5D0)
-I (C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.10.0\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x5730C5D0)
