@@ -1,0 +1,27 @@
+--cpu Cortex-M4.fp
+".\objects\commsdecodethread.o"
+".\objects\drivemotorthread.o"
+".\objects\stepperthread.o"
+".\objects\main.o"
+".\objects\stm32f4xx_it.o"
+"C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\RTOS\RTX\LIB\ARM\RTX_CM4.lib"
+".\objects\rtx_conf_cm.o"
+".\objects\stm32f4xx_hal.o"
+".\objects\stm32f4xx_hal_cortex.o"
+".\objects\stm32f4xx_hal_dma.o"
+".\objects\stm32f4xx_hal_dma_ex.o"
+".\objects\stm32f4xx_hal_gpio.o"
+".\objects\stm32f4xx_hal_pwr.o"
+".\objects\stm32f4xx_hal_pwr_ex.o"
+".\objects\stm32f4xx_hal_rcc.o"
+".\objects\stm32f4xx_hal_rcc_ex.o"
+".\objects\stm32f4xx_hal_tim.o"
+".\objects\stm32f4xx_hal_tim_ex.o"
+".\objects\stm32f4xx_hal_uart.o"
+".\objects\stm32f4xx_hal_msp.o"
+".\objects\startup_stm32f401xe.o"
+".\objects\system_stm32f4xx.o"
+--strict --scatter ".\Objects\systemTestV2.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\systemTestV2.map" -o .\Objects\systemTestV2.axf
