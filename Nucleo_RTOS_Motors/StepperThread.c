@@ -3,8 +3,10 @@
   * File Name          : StepperThread.c
   * Description        : Stepper Control Code
 	* User Code by			 : Luke Jackson, Sulaymaan Shaikh
-	* Version						 : 0.1
+	* Version						 : 0.2
 	*
+	*						0.2:
+	*							- Amended logic for retract routine
 	* Changelog:
 	*						0.1:
 	*							- Added Thread Init Code
@@ -61,7 +63,7 @@ void StepperControl (void const *argument)
 		if (pigShutdown)
 		{
 			//Retract Legs until minimum limit switches pressed
-		 while (!limit0 & !limit1 & !limit4)
+		 while (limit0 & limit1 & limit4)
 		 {
 			switch (state) 
 			{
