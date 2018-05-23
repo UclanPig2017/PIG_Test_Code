@@ -3,9 +3,11 @@
   * File Name          : StrainGaugeThread.c
   * Description        : Strain Gauge - Determine direction of stepper
 	* User Code by			 : Ian Taylor, Luke Jackson, Sulaymaan Shaikh
-	* Version						 : 0.1
+	* Version						 : 0.2
 	*
 	* Changelog:
+	*						0.2:
+	*							- Amended Strain Gauge check logic
 	*						0.1:
 	*							- Added Strain Gauge Code
   ******************************************************************************
@@ -78,15 +80,15 @@ void StrainGauge(void const *argument)
 		
 		aveStrain = ((strainGauge[0] + strainGauge[1] + strainGauge[2])/3);
 		
-		if((aveStrain > (prevStrain*1.1))&&(aveStrain < (prevStrain*0.90)))
+		if((aveStrain < (prevStrain*1.1))&&(aveStrain > (prevStrain*0.90)))
 		{
 			stepDir = 2;
 		}
-		else if (aveStrain < (prevStrain*1.1))
+		else if (aveStrain > (prevStrain*1.1))
 		{
 			stepDir = 1;
 		}
-		else if (aveStrain > (prevStrain*0.9))
+		else if (aveStrain < (prevStrain*0.9))
 		{
 			stepDir = 0;
 		}

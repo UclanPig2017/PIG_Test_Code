@@ -1,118 +1,227 @@
 /**
   ******************************************************************************
-  * File Name          : StrainGaugeThread.c
-  * Description        : Strain Gauge - Determine direction of stepper
-	* User Code by			 : Ian Taylor, Luke Jackson, Sulaymaan Shaikh
-	* Version						 : 0.1
-	*
+  * File Name          : StepperThread.c
+  * Description        : Stepper Control Code
+	* User Code by			 : Luke Jackson, Sulaymaan Shaikh
+	* Version						 : 0.3
 	* Changelog:
+	*						0.3:
+	*							- Reviewed and corrected stepper pins
+	*						0.2:
+	*							- Corrected Pins
+	*							- Amended logic for retract routine
 	*						0.1:
-	*							- Added Strain Gauge Code
+	*							- Added Thread Init Code
+	*							- Integrated Luke+Sully Stepper Motor Drive code
   ******************************************************************************
 	*/
 	
 /* INCLUDE FILES */
 #include "main.h"
 #include "stm32f4xx_hal.h"
-#include "cmsis_os.h"                   // CMSIS RTOS header file
+#include "cmsis_os.h"                                           // CMSIS RTOS header file
 
 /* EXTERNAL VARIABLES*/
 extern int pigStatus;										// STATUS DETERMINES IF SYSTEM NEEDS TO RUN (1) OR SHUTDOWN (0)
-extern int pigShutdown;									// SHUTDOWN DETERMINES IF NEED TO RESET VARIABLES
-extern uint16_t adcBuf[7];
-extern int stepDir;
-extern int convComplete;								
-float aveStrain, prevStrain;
+extern int pigShutdown;									// SHUTDOWN DETERMINES IF ARMS NEED TO RETRACT, (1) TO RETRACT, (0)
+
 /* LOCAL VARIABLES */
-uint16_t strainGauge[3];
-uint16_t strainGaugePrev[3];
-int firstRun = 1;
+int state = 1;
+int stepDir = 0;
+int limit1 = 1;
+int limit2 = 1;
+int limit4 = 1;
+int limit13 = 1;
+int limit14 = 1;
+int limit15 = 1;
 
 /* FUNCTION PROTOTYPES */
-void strainShutdown(void);
+extern void driverShutdown(void);
+extern void strainShutdown(void);
 
 /* CODE */
 
 //Thread Initialisation
-void StrainGauge(void const *argument);                     	// thread function
-osThreadId tid_StrainGauge;                                  // thread id
-osThreadDef (StrainGauge, osPriorityNormal, 1, 0);           // thread object
+void StepperControl (void const *argument);                     // thread function
+osThreadId tid_StepperControl;                                  // thread id
+osThreadDef (StepperControl, osPriorityNormal, 1, 0);           // thread object
 
 /**
-  * @brief  This function initialises the Strain Gauge read thread
+  * @brief  This function initialises the Stepper Motor Control thread
   * @param  None
   * @retval Thread Initialisation Status
   */
-int initStrainGauge (void) 
+int initSteppers (void) 
 {
-  tid_StrainGauge = osThreadCreate (osThread(StrainGauge), NULL);
-  if (!tid_StrainGauge) return(-1);
+  tid_StepperControl = osThreadCreate (osThread(StepperControl), NULL);
+  if (!tid_StepperControl) return(-1);
   return(0);
 }
 
 //Thread Main Code
-void StrainGauge(void const *argument)
+void StepperControl (void const *argument)
 {
 	while(1)
 	{
+		//If shutdown command received, retract, then yield thread
+		if (pigShutdown)
+		{
+			//Retract Legs until minimum limit switches pressed
+		 while (limit1 & limit2 & limit4)
+		 {
+			switch (state) 
+			{
+				case 1:
+				{
+					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, 1); 
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 0);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 1);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 0);
+				
+					break;
+				}
+			
+				case 2:
+				{
+					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, 0);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 1);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 1);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 0);
+				
+					break;
+				}
+			
+				case 3:
+				{
+					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, 0);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 1);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 0);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 1);
+					
+					break;
+				}
+			
+				case 4:
+				{
+					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, 1);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 0);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 0);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 1);
+				
+					break;
+				}
+			
+				default:
+					break;
+			}
+			
+			state--;
+			
+			if (state < 1)
+			{
+				state = 4;
+			}
+			
+		 }
+			//Reset pigShutdown
+			pigShutdown = 0;
+		 
+			//Shutdown Driving Motors
+			driverShutdown();
+			//Reset Strain Gauge Thread
+			strainShutdown();
+			//Yield Thread
+			osThreadYield();
+		}
+	
 		//If idling, yield thread
 		while(!pigStatus)
 		{
 			osThreadYield();
 		}
-			
-		while(firstRun)
-		{
-			osThreadYield();
-		}
-		
-		while(!convComplete)
-		{
-			osThreadYield();
-		}
-		
-		//Begin Processing Strain Values
-		// Average strain 
-		
-		prevStrain = ((strainGaugePrev[0] + strainGaugePrev[1] + strainGaugePrev[2]) /3);
-		
-		aveStrain = ((strainGauge[0] + strainGauge[1] + strainGauge[2])/3);
-		
-		if((aveStrain < (prevStrain*1.1))&&(aveStrain > (prevStrain*0.90)))
-		{
-			stepDir = 2;
-		}
-		else if (aveStrain > (prevStrain*1.1))
-		{
-			stepDir = 1;
-		}
-		else if (aveStrain < (prevStrain*0.9))
-		{
-			stepDir = 0;
-		}
-		
-		//Set new values as previous values
-		strainGaugePrev[0] = strainGauge[0];
-		strainGaugePrev[1] = strainGauge[1];
-		strainGaugePrev[2] = strainGauge[2];
-		
-		//Yield Thread
-		osThreadYield();
-	}
-}
-
-/**
-  * @brief  This function resets the strain gauge values
-  * @param  None
-  */
-void strainShutdown(void)
-{
-	strainGaugePrev[0] = 0; 
-	strainGaugePrev[1] = 0;
-	strainGaugePrev[2] = 0;
 	
-	strainGauge[0] = 0; 
-	strainGauge[1] = 0;
-	strainGauge[2] = 0;
-	firstRun = 1;
+		//If not idling, shift through stepper state
+		if ((!limit1 | !limit2 | !limit4) && (stepDir == 0))
+		{;}
+		else if ((!limit13 | !limit14 | !limit15) && (stepDir == 1))
+		{;}	
+		else if (stepDir == 2)
+		{;}
+		else
+		{
+			//State Machine for driving step magnets
+			switch (state) 
+			{
+				case 1:
+				{
+					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, 1); 
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 0);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 1);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 0);
+				
+					break;
+				}
+			
+				case 2:
+				{
+					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, 0);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 1);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 1);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 0);
+				
+					break;
+				}
+			
+				case 3:
+				{
+					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, 0);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 1);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 0);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 1);
+					
+					break;
+				}
+			
+				case 4:
+				{
+					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, 1);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 0);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 0);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 1);
+				
+					break;
+				}
+			
+				default:
+					break;
+			}
+		
+			//Increment or Decrement depending on stepdirection
+			switch (stepDir)
+			{
+				case 0:
+					state++;
+					break;
+				case 1:
+					state--;
+					break;
+				default:
+					break;
+			}
+		
+			//Reset State if outside state bounds
+			if (state > 4)
+			{
+				state = 1;
+			}
+			else if (state < 1)
+			{
+				state = 4;
+			}
+		}
+		
+		//Delay drive for 1ms
+		HAL_Delay(1);
+		osThreadYield();	//Yield Thread
+	}
 }

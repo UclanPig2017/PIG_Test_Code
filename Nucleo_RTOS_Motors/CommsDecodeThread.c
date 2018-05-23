@@ -23,12 +23,15 @@
 	
 /* Variables */
 extern uint8_t rxBuf[1];
+extern uint16_t adcBuf[7];
 extern int pigDir;
+extern UART_HandleTypeDef huart2;
 int pigShutdown = 0;
 int pigStatus = 0;
 int ComRec = 0;
 	
 /* Function Prototypes*/
+void dataSend(void);
 
 /* CODE */
 
@@ -71,6 +74,7 @@ void CommsDecode (void const *argument)
 					break;
 				case '4':
 					//Send Data
+					dataSend();
 					break;
 				case '5':
 					//Retract Stepper, Idle Threads
@@ -86,3 +90,8 @@ void CommsDecode (void const *argument)
 		osThreadYield();	//Yield Thread
 	}
 }
+
+void dataSend(void)
+{
+	//Send Diagnostic
+}	

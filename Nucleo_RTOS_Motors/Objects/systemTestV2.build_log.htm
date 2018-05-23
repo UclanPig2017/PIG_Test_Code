@@ -27,6 +27,16 @@ Project File Date:  05/22/2018
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 3 (build 300)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
+compiling StrainGaugeThread.c...
+StrainGaugeThread.c(83): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  		if((aveStrain < (prevStrain*1.1))&&(aveStrain > (prevStrain*0.90)))
+StrainGaugeThread.c(83): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  		if((aveStrain < (prevStrain*1.1))&&(aveStrain > (prevStrain*0.90)))
+StrainGaugeThread.c(87): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  		else if (aveStrain > (prevStrain*1.1))
+StrainGaugeThread.c(91): warning:  #1035-D: single-precision operand implicitly converted to double-precision
+  		else if (aveStrain < (prevStrain*0.9))
+StrainGaugeThread.c: 4 warnings, 0 errors
 compiling CommsDecodeThread.c...
 compiling StepperThread.c...
 StepperThread.c(76): warning:  #188-D: enumerated type mixed with another type
@@ -157,10 +167,12 @@ StepperThread.c(190): warning:  #188-D: enumerated type mixed with another type
   					HAL_GPIO_WritePin(
 PIOC, 
 PIO_PIN_7, 1);
-StepperThread.c: 32 warnings, 0 errors
+StepperThread.c(227): warning:  #1-D: last line of file ends without a newline
+  }
+StepperThread.c: 33 warnings, 0 errors
 linking...
-Program Size: Code=20156 RO-data=764 RW-data=204 ZI-data=5636  
-".\Objects\systemTestV2.axf" - 0 Error(s), 32 Warning(s).
+Program Size: Code=20164 RO-data=764 RW-data=204 ZI-data=5636  
+".\Objects\systemTestV2.axf" - 0 Error(s), 37 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -174,19 +186,19 @@ Package Vendor: ARM
 
 Package Vendor: Keil
                 http://www.keil.com/pack/Keil.STM32F4xx_DFP.2.10.0.pack
-                Keil::Device:STM32Cube HAL:Common:1.5.0
+                Keil::Device:STM32Cube HAL:UART:1.5.0
                 STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
+   * Component: UART Version: 1.5.0
+   * Component: TIM Version: 1.5.0
+   * Component: STM32Cube Framework Version: 1.0.0
+   * Component: Startup Version: 2.5.0
    * Component: Common Version: 1.5.0
    * Component: ADC Version: 1.5.0
    * Component: Cortex Version: 1.5.0
-   * Component: GPIO Version: 1.5.0
    * Component: DMA Version: 1.5.0
+   * Component: GPIO Version: 1.5.0
    * Component: PWR Version: 1.5.0
    * Component: RCC Version: 1.5.0
-   * Component: TIM Version: 1.5.0
-   * Component: UART Version: 1.5.0
-   * Component: Startup Version: 2.5.0
-   * Component: STM32Cube Framework Version: 1.0.0
 
 Package Vendor: Keil
                 project-path/Keil.FrameworkCubeMX.1.0.0.pack
@@ -209,21 +221,37 @@ Package Vendor: Keil
    * Component: ::CMSIS:RTOS:1.0 (API)
 
    * Component: ARM::CMSIS:RTOS:Keil RTX:4.80.0
-      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\MailQueue.c
       Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\Mutex.c
-      Include file:  CMSIS\RTOS\RTX\UserCodeTemplates\osObjects.h
-      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\main.c
-      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\MemPool.c
-      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\Timer.c
-      Source file:   CMSIS\RTOS\RTX\SRC\ARM\SVC_Table.s
-      Include file:  CMSIS\RTOS\RTX\INC\cmsis_os.h
       Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\Thread.c
-      Source file:   CMSIS\RTOS\RTX\Templates\RTX_Conf_CM.c
+      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\Timer.c
       Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\MsgQueue.c
       Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\Semaphore.c
+      Source file:   CMSIS\RTOS\RTX\SRC\ARM\SVC_Table.s
+      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\MailQueue.c
+      Include file:  CMSIS\RTOS\RTX\INC\cmsis_os.h
+      Include file:  CMSIS\RTOS\RTX\UserCodeTemplates\osObjects.h
+      Source file:   CMSIS\RTOS\RTX\Templates\RTX_Conf_CM.c
+      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\main.c
+      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\MemPool.c
       Library file:  CMSIS\RTOS\RTX\LIB\ARM\RTX_CM4.lib
 
    * Component: ARM::CMSIS:CORE:4.3.0
+
+   * Component: Keil::Device:STM32Cube HAL:UART:1.5.0
+      Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_uart.c
+
+   * Component: Keil::Device:STM32Cube HAL:TIM:1.5.0
+      Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.c
+      Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.c
+
+   * Component: ::Device:STM32Cube Framework:1.0.0 (API)
+
+   * Component: Keil::Device:Startup:2.5.0
+      Source file:   Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c
+      Source file:   Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\arm\startup_stm32f401xe.s
+      Source file:   MDK\Device\Source\ARM\STM32F401xx_OPT.s
+      Source file:   MDK\Device\Source\ARM\STM32F4xx_OTP.s
+      Include file:  Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
 
    * Component: Keil::Device:STM32Cube HAL:Common:1.5.0
       Include file:  Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h
@@ -236,12 +264,12 @@ Package Vendor: Keil
    * Component: Keil::Device:STM32Cube HAL:Cortex:1.5.0
       Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.c
 
+   * Component: Keil::Device:STM32Cube HAL:DMA:1.5.0
+      Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma.c
+      Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma_ex.c
+
    * Component: Keil::Device:STM32Cube HAL:GPIO:1.5.0
       Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.c
-
-   * Component: Keil::Device:STM32Cube HAL:DMA:1.5.0
-      Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma_ex.c
-      Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma.c
 
    * Component: Keil::Device:STM32Cube HAL:PWR:1.5.0
       Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr_ex.c
@@ -251,27 +279,11 @@ Package Vendor: Keil
       Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc_ex.c
       Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.c
 
-   * Component: Keil::Device:STM32Cube HAL:TIM:1.5.0
-      Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.c
-      Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.c
-
-   * Component: Keil::Device:STM32Cube HAL:UART:1.5.0
-      Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_uart.c
-
-   * Component: Keil::Device:Startup:2.5.0
-      Source file:   Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\arm\startup_stm32f401xe.s
-      Source file:   MDK\Device\Source\ARM\STM32F4xx_OTP.s
-      Include file:  Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
-      Source file:   MDK\Device\Source\ARM\STM32F401xx_OPT.s
-      Source file:   Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c
-
-   * Component: ::Device:STM32Cube Framework:1.0.0 (API)
-
    * Component: Keil::Device:STM32Cube Framework:STM32CubeMX:1.0.0
       Include file:  MX_Device.h
       Include file:  STCubeGenerated\Inc\stm32f4xx_hal_conf.h
       Source file:   STCubeGenerated\Src\stm32f4xx_hal_msp.c
-Build Time Elapsed:  00:00:06
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>
