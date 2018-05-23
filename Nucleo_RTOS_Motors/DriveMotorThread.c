@@ -131,3 +131,14 @@ void setPWM3(uint16_t value)
 	HAL_TIM_PWM_ConfigChannel(&htim2, &sConfigOC, TIM_CHANNEL_3);
 	HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3); // start pwm generation
 } 
+
+/**
+  * @brief  This function shuts down the drive motors
+  * @param  None
+  */
+void driverShutdown(void)
+{
+	setPWM1(0);
+	setPWM2(0);
+	setPWM3(0);
+}

@@ -2,6 +2,8 @@
 ".\objects\commsdecodethread.o"
 ".\objects\drivemotorthread.o"
 ".\objects\stepperthread.o"
+".\objects\adcdmathread.o"
+".\objects\straingaugethread.o"
 ".\objects\main.o"
 ".\objects\stm32f4xx_it.o"
 "C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\RTOS\RTX\LIB\ARM\RTX_CM4.lib"
@@ -21,6 +23,8 @@
 ".\objects\stm32f4xx_hal_msp.o"
 ".\objects\startup_stm32f401xe.o"
 ".\objects\system_stm32f4xx.o"
+".\objects\stm32f4xx_hal_adc.o"
+".\objects\stm32f4xx_hal_adc_ex.o"
 --strict --scatter ".\Objects\systemTestV2.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

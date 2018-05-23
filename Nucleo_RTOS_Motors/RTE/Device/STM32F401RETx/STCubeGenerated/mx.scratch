@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Project>
-<ProjectName>\\DEV-HA\Redirected_Folders\elobley\Desktop\systemTestV2\RTE\Device\STM32F401RETx\STCubeGenerated\\STCubeGenerated</ProjectName>
+<ProjectName>C:\Users\Sulaymaan\Documents\GitHub\Pig_Test_Code\Nucleo_RTOS_Motors\RTE\Device\STM32F401RETx\STCubeGenerated\\STCubeGenerated</ProjectName>
+<ProjectNature>C</ProjectNature> 
 <CMSIS>..\Drivers\CMSIS</CMSIS>
-<HAL_Driver>C:\Users\elobley\STM32Cube\Repository\STM32Cube_FW_F4_V1.18.0\Drivers\CMSIS</HAL_Driver>
-
+<HAL_Driver>C:\Users\Sulaymaan\STM32Cube\Repository\STM32Cube_FW_F4_V1.18.0\Drivers\CMSIS</HAL_Driver>
 <Toolchain>MDK-ARM</Toolchain>
 	<Toolversion>5</Toolversion>
 <Version>0</Version>
 
 <filestoremove>
-	<file>
-	   		<name>..\Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\arm\startup_stm32f401xe.s</name>
-	</file>
+    <file>
+    <name>..\Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\arm\startup_stm32f401xe.s</name>
+    <name>..\Src\system_stm32f4xx.c</name>
+    </file>
 </filestoremove>
 
 <inctoremove>
@@ -34,8 +35,8 @@
 			
     <usedDebug>true</usedDebug>
     	<debugprobe></debugprobe>
-    <optimization></optimization>
-    <icfloc>1</icfloc>
+    <optimization>2</optimization>
+    <icfloc>0</icfloc>
     <Adefines>
         <define></define>
     </Adefines>   
@@ -55,8 +56,6 @@
         <Cdefines>
             <define>USE_FULL_LL_DRIVER</define>
             <define>MBEDTLS_CONFIG_FILE=&lt;mbedtls_config.h&gt;</define>
-            <define>_TIMEVAL_DEFINED</define>
-            <define>_SYS_TIME_H_</define>
         </Cdefines>         
     </definestoremove>
     
@@ -77,6 +76,12 @@
 	    <name>Drivers</name> 
 		   <group>
 		 		<name>STM32F4xx_HAL_Driver</name>
+						<file>
+							<name>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c</name>
+						</file>
+						<file>
+							<name>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc_ex.c</name>
+						</file>
 						<file>
 							<name>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c</name>
 						</file>
@@ -126,7 +131,7 @@
 		    <group>
 		    	<name>CMSIS</name>
 							<file>
-								<name>../Src/system_stm32f4xx.c</name>
+								<name>../\Src/system_stm32f4xx.c</name>
 							</file>
 		    	</group>
 	  </group>   

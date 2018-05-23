@@ -3,9 +3,13 @@
   * File Name          : StepperThread.c
   * Description        : Stepper Control Code
 	* User Code by			 : Luke Jackson, Sulaymaan Shaikh
-	* Version						 : 0.1
+	* Version						 : 0.2
 	*
 	* Changelog:
+	*						0.3:
+	*							- Reviewed and corrected stepper pins (again)
+	*						0.2:
+	*							- Corrected Pins
 	*						0.1:
 	*							- Added Thread Init Code
 	*							- Integrated Luke+Sully Stepper Motor Drive code
@@ -24,15 +28,17 @@ extern int pigShutdown;									// SHUTDOWN DETERMINES IF ARMS NEED TO RETRACT, 
 /* LOCAL VARIABLES */
 int state = 1;
 int stepDir = 0;
-int limit0 = 1;
 int limit1 = 1;
+int limit2 = 1;
 int limit4 = 1;
-int limit5 = 1;
-int limit6 = 1;
-int limit7 = 1;
+int limit13 = 1;
+int limit14 = 1;
+int limit15 = 1;
 
 /* FUNCTION PROTOTYPES */
-	
+extern void driverShutdown(void);
+extern void strainShutdown(void);
+
 /* CODE */
 
 //Thread Initialisation
@@ -61,16 +67,16 @@ void StepperControl (void const *argument)
 		if (pigShutdown)
 		{
 			//Retract Legs until minimum limit switches pressed
-		 while (!limit0 & !limit1 & !limit4)
+		 while (!limit1 & !limit2 & !limit4)
 		 {
 			switch (state) 
 			{
 				case 1:
 				{
 					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, 1); 
-					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 0);
-					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 1);
 					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 0);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 1);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 0);
 				
 					break;
 				}
@@ -78,9 +84,9 @@ void StepperControl (void const *argument)
 				case 2:
 				{
 					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, 0);
-					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 1);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 1);
 					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 1);
-					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 0);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 0);
 				
 					break;
 				}
@@ -88,9 +94,9 @@ void StepperControl (void const *argument)
 				case 3:
 				{
 					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, 0);
-					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 1);
-					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 0);
 					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 1);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 0);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 1);
 					
 					break;
 				}
@@ -98,9 +104,9 @@ void StepperControl (void const *argument)
 				case 4:
 				{
 					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, 1);
-					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 0);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 0);
 					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 0);
-					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 1);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 1);
 				
 					break;
 				}
@@ -119,7 +125,11 @@ void StepperControl (void const *argument)
 		 }
 			//Reset pigShutdown
 			pigShutdown = 0;
-			
+		 
+			//Shutdown Driving Motors
+			driverShutdown();
+			//Reset Strain Gauge Thread
+			strainShutdown();
 			//Yield Thread
 			osThreadYield();
 		}
@@ -131,10 +141,12 @@ void StepperControl (void const *argument)
 		}
 	
 		//If not idling, shift through stepper state
-		if ((!limit0 | !limit1 | !limit4) && (!stepDir))
+		if ((!limit1 | !limit2 | !limit4) && (stepDir == 0))
 		{;}
-		else if ((!limit5 | !limit6 | !limit7) && (stepDir))
+		else if ((!limit13 | !limit14 | !limit15) && (stepDir == 1))
 		{;}	
+		else if (stepDir == 2)
+		{;}
 		else
 		{
 			//State Machine for driving step magnets
@@ -143,9 +155,9 @@ void StepperControl (void const *argument)
 				case 1:
 				{
 					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, 1); 
-					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 0);
-					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 1);
 					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 0);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 1);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 0);
 				
 					break;
 				}
@@ -153,9 +165,9 @@ void StepperControl (void const *argument)
 				case 2:
 				{
 					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, 0);
-					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 1);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 1);
 					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 1);
-					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 0);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 0);
 				
 					break;
 				}
@@ -163,9 +175,9 @@ void StepperControl (void const *argument)
 				case 3:
 				{
 					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, 0);
-					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 1);
-					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 0);
 					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 1);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 0);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 1);
 					
 					break;
 				}
@@ -173,9 +185,9 @@ void StepperControl (void const *argument)
 				case 4:
 				{
 					HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, 1);
-					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 0);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 0);
 					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, 0);
-					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_9, 1);
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_7, 1);
 				
 					break;
 				}

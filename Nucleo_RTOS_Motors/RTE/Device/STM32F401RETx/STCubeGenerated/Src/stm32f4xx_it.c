@@ -41,9 +41,12 @@
   * File Name          : stm32f4xx_it.c
   * Description        : Interrupt Service Routines
 	* User Code by			 : Sulaymaan Shaikh, Luke Jackson
-	* Version						 : 0.1
+	* Version						 : 0.2
 	*
 	* Changelog:
+	*						0.2:
+	*								- Corrected Stepper Limit code for right pins
+	*								- Generated ADC DMA Code
 	*						0.1:
 	*								- Added code to handle UART Interrupt + Set flag
 	*								- Added code to handle limit switch press/depress
@@ -55,12 +58,13 @@ extern int ComRec;
 extern uint8_t rxBuf[1];
 
 //Stepper Control
-int limsw0, limsw1, limsw4, limsw5, limsw6, limsw7;
-extern int limit0, limit1, limit4, limit5, limit6, limit7;
+int limsw1, limsw2, limsw4, limsw13, limsw14, limsw15;
+extern int limit1, limit2, limit4, limit13, limit14, limit15;
 
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
+extern DMA_HandleTypeDef hdma_adc1;
 extern UART_HandleTypeDef huart2;
 
 /******************************************************************************/
@@ -90,6 +94,8 @@ void HardFault_Handler(void)
   /* USER CODE END HardFault_IRQn 0 */
   while (1)
   {
+    /* USER CODE BEGIN W1_HardFault_IRQn 0 */
+    /* USER CODE END W1_HardFault_IRQn 0 */
   }
   /* USER CODE BEGIN HardFault_IRQn 1 */
 
@@ -106,6 +112,8 @@ void MemManage_Handler(void)
   /* USER CODE END MemoryManagement_IRQn 0 */
   while (1)
   {
+    /* USER CODE BEGIN W1_MemoryManagement_IRQn 0 */
+    /* USER CODE END W1_MemoryManagement_IRQn 0 */
   }
   /* USER CODE BEGIN MemoryManagement_IRQn 1 */
 
@@ -122,6 +130,8 @@ void BusFault_Handler(void)
   /* USER CODE END BusFault_IRQn 0 */
   while (1)
   {
+    /* USER CODE BEGIN W1_BusFault_IRQn 0 */
+    /* USER CODE END W1_BusFault_IRQn 0 */
   }
   /* USER CODE BEGIN BusFault_IRQn 1 */
 
@@ -138,6 +148,8 @@ void UsageFault_Handler(void)
   /* USER CODE END UsageFault_IRQn 0 */
   while (1)
   {
+    /* USER CODE BEGIN W1_UsageFault_IRQn 0 */
+    /* USER CODE END W1_UsageFault_IRQn 0 */
   }
   /* USER CODE BEGIN UsageFault_IRQn 1 */
 
@@ -206,30 +218,6 @@ void DebugMon_Handler(void)
 /******************************************************************************/
 
 /**
-* @brief This function handles EXTI line0 interrupt.
-*/
-void EXTI0_IRQHandler(void)
-{
-  /* USER CODE BEGIN EXTI0_IRQn 0 */
-	int pinStatus = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_0);
-	if (!pinStatus)
-	{
-		limsw1 = 0;
-		limit1 = 0;
-	}
-	else if (pinStatus)
-	{
-		limsw1 = 1;
-		limit1 = 1;
-	}	
-  /* USER CODE END EXTI0_IRQn 0 */
-  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0);
-  /* USER CODE BEGIN EXTI0_IRQn 1 */
-
-  /* USER CODE END EXTI0_IRQn 1 */
-}
-
-/**
 * @brief This function handles EXTI line1 interrupt.
 */
 void EXTI1_IRQHandler(void)
@@ -254,22 +242,50 @@ void EXTI1_IRQHandler(void)
 }
 
 /**
+* @brief This function handles EXTI line2 interrupt.
+*/
+void EXTI2_IRQHandler(void)
+{
+  /* USER CODE BEGIN EXTI2_IRQn 0 */
+
+	int pinStatus = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_2);
+	if (!pinStatus)
+	{
+		limsw2 = 0;
+		limit2 = 0;
+	}
+	else if (pinStatus)
+	{
+		limsw2 = 1;
+		limit2 = 1;
+	}	
+	
+  /* USER CODE END EXTI2_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_2);
+  /* USER CODE BEGIN EXTI2_IRQn 1 */
+
+  /* USER CODE END EXTI2_IRQn 1 */
+}
+
+/**
 * @brief This function handles EXTI line4 interrupt.
 */
 void EXTI4_IRQHandler(void)
 {
   /* USER CODE BEGIN EXTI4_IRQn 0 */
+
 	int pinStatus = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_4);
 	if (!pinStatus)
 	{
-		limsw1 = 0;
-		limit1 = 0;
+		limsw4 = 0;
+		limit4 = 0;
 	}
 	else if (pinStatus)
 	{
-		limsw1 = 1;
-		limit1 = 1;
-	}	
+		limsw4 = 1;
+		limit4 = 1;
+	}		
+	
   /* USER CODE END EXTI4_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_4);
   /* USER CODE BEGIN EXTI4_IRQn 1 */
@@ -278,80 +294,20 @@ void EXTI4_IRQHandler(void)
 }
 
 /**
-* @brief This function handles EXTI line[9:5] interrupts.
-*/
-void EXTI9_5_IRQHandler(void)
-{
-  /* USER CODE BEGIN EXTI9_5_IRQn 0 */
-	if(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_5) != RESET)
-	{
-		int pinStatus = HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_5);
-		if (!pinStatus)
-		{
-			limsw5 = 0;
-			limit5 = 0;
-		}
-		else if (pinStatus)
-		{
-			limsw5 = 1;
-			limit5 = 1;
-		}		
-	}
-	
-	if(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_6) != RESET)
-	{
-		int pinStatus = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_6);
-		if (!pinStatus)
-		{
-			limsw6 = 0;
-			limit6 = 0;
-		}
-		else if (pinStatus)
-		{
-			limsw6 = 1;
-			limit6 = 1;
-		}		
-	}
-	
-	if(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_7) != RESET)
-	{
-		int pinStatus = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_7);
-		if (!pinStatus)
-		{
-			limsw7 = 0;
-			limit7 = 0;
-		}
-		else if (pinStatus)
-		{
-			limsw7 = 1;
-			limit7 = 1;
-		}		
-	}
-  /* USER CODE END EXTI9_5_IRQn 0 */
-  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_5);
-  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_6);
-  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_7);
-  /* USER CODE BEGIN EXTI9_5_IRQn 1 */
-
-  /* USER CODE END EXTI9_5_IRQn 1 */
-}
-
-/**
 * @brief This function handles USART2 global interrupt.
 */
 void USART2_IRQHandler(void)
 {
-  /* USER CODE BEGIN USART1_IRQn 0 */
+  /* USER CODE BEGIN USART2_IRQn 0 */
 	//Determine if waiting on data reception 
 	int waitReceive = 0;
 	if ((USART2->SR & USART_SR_RXNE) != RESET)
 	{
 		waitReceive = 1;
 	}
-	
-  /* USER CODE END USART1_IRQn 0 */
+  /* USER CODE END USART2_IRQn 0 */
   HAL_UART_IRQHandler(&huart2);
-  /* USER CODE BEGIN USART1_IRQn 1 */
+  /* USER CODE BEGIN USART2_IRQn 1 */
 	/* FOR TRANSMISSION */
 	
 	/* FOR RECEPTION */
@@ -361,7 +317,87 @@ void USART2_IRQHandler(void)
 		//If all characters received, restart reception
 		HAL_UART_Receive_IT(&huart2, rxBuf, 1);
 	}
-  /* USER CODE END USART1_IRQn 1 */
+  /* USER CODE END USART2_IRQn 1 */
+}
+
+/**
+* @brief This function handles EXTI line[15:10] interrupts.
+*/
+void EXTI15_10_IRQHandler(void)
+{
+  /* USER CODE BEGIN EXTI15_10_IRQn 0 */
+	if(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_13) != RESET)
+	{
+		int pinStatus = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13);
+		if (!pinStatus)
+		{
+			limsw13 = 0;
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 1);
+			limit13 = 0;
+		}
+		else if (pinStatus)
+		{
+			limsw13 = 1;
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
+			limit13 = 1;
+		}		
+	}
+	
+	if(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_14) != RESET)
+	{
+		int pinStatus = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14);
+		if (!pinStatus)
+		{
+			limsw14 = 0;
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 1);
+			limit14 = 0;
+		}
+		else if (pinStatus)
+		{
+			limsw14 = 1;
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
+			limit14 = 1;
+		}		
+	}
+	
+	if(__HAL_GPIO_EXTI_GET_IT(GPIO_PIN_15) != RESET)
+	{
+		int pinStatus = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_15);
+		if (!pinStatus)
+		{
+			limsw15 = 0;
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 1);
+			limit15 = 0;
+		}
+		else if (pinStatus)
+		{
+			limsw15 = 1;
+			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, 0);
+			limit15 = 1;
+		}		
+	}
+
+  /* USER CODE END EXTI15_10_IRQn 0 */
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_13);
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_14);
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_15);
+  /* USER CODE BEGIN EXTI15_10_IRQn 1 */
+
+  /* USER CODE END EXTI15_10_IRQn 1 */
+}
+
+/**
+* @brief This function handles DMA2 stream0 global interrupt.
+*/
+void DMA2_Stream0_IRQHandler(void)
+{
+  /* USER CODE BEGIN DMA2_Stream0_IRQn 0 */
+
+  /* USER CODE END DMA2_Stream0_IRQn 0 */
+  HAL_DMA_IRQHandler(&hdma_adc1);
+  /* USER CODE BEGIN DMA2_Stream0_IRQn 1 */
+
+  /* USER CODE END DMA2_Stream0_IRQn 1 */
 }
 
 /* USER CODE BEGIN 1 */

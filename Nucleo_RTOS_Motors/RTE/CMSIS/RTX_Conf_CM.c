@@ -46,7 +46,7 @@
 //   <i> Defines default stack size for threads with osThreadDef stacksz = 0
 //   <i> Default: 200
 #ifndef OS_STKSIZE
- #define OS_STKSIZE     50      // this stack size value is in words
+ #define OS_STKSIZE     74      // this stack size value is in words
 #endif
  
 //   <o>Main Thread stack size [bytes] <64-32768:8><#/4>
@@ -276,6 +276,7 @@ void os_error (uint32_t error_code) {
     case OS_ERROR_STACK_OVF:
       /* Stack overflow detected for the currently running task. */
       /* Thread can be identified by calling svcThreadGetId().   */
+			svcThreadGetId();
       break;
     case OS_ERROR_FIFO_OVF:
       /* ISR FIFO Queue buffer overflow detected. */
