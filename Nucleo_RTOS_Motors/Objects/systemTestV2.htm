@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\systemTestV2.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\systemTestV2.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060300: Last Updated: Tue May 22 16:45:40 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060300: Last Updated: Wed May 23 11:40:51 2018
 <BR><P>
 <H3>Maximum Stack Usage =        160 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -536,7 +536,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f401xe.o(RESET)
 </UL>
 <P><STRONG><a name="[5a]"></a>DriveControl</STRONG> (Thumb, 174 bytes, Stack size 0 bytes, drivemotorthread.o(i.DriveControl))
-<BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = DriveControl &rArr; setPWM3 &rArr; HAL_TIM_PWM_ConfigChannel &rArr; TIM_OC4_SetConfig
+<BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = DriveControl &rArr; setPWM3 &rArr; HAL_TIM_PWM_ConfigChannel &rArr; TIM_OC2_SetConfig
 </UL>
 <BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
@@ -828,8 +828,8 @@ Global Symbols
 <P><STRONG><a name="[a7]"></a>HAL_TIM_Base_Init</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, stm32f4xx_hal_tim.o(i.HAL_TIM_Base_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = HAL_TIM_Base_Init &rArr; HAL_TIM_Base_MspInit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_MspInit
-<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_SetConfig
+<BR>[Calls]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_Base_SetConfig
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_MspInit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM2_Init
 </UL>
@@ -860,12 +860,12 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[b0]"></a>HAL_TIM_PWM_ConfigChannel</STRONG> (Thumb, 264 bytes, Stack size 16 bytes, stm32f4xx_hal_tim.o(i.HAL_TIM_PWM_ConfigChannel))
-<BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = HAL_TIM_PWM_ConfigChannel &rArr; TIM_OC4_SetConfig
+<BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = HAL_TIM_PWM_ConfigChannel &rArr; TIM_OC2_SetConfig
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC4_SetConfig
+<BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC2_SetConfig
+<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC4_SetConfig
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC3_SetConfig
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC1_SetConfig
-<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_OC2_SetConfig
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM2_Init
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setPWM3
@@ -958,8 +958,8 @@ Global Symbols
 <P><STRONG><a name="[4]"></a>NMI_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.NMI_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f401xe.o(RESET)
 </UL>
-<P><STRONG><a name="[5b]"></a>StepperControl</STRONG> (Thumb, 710 bytes, Stack size 0 bytes, stepperthread.o(i.StepperControl))
-<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = StepperControl &rArr; driverShutdown &rArr; setPWM3 &rArr; HAL_TIM_PWM_ConfigChannel &rArr; TIM_OC4_SetConfig
+<P><STRONG><a name="[5b]"></a>StepperControl</STRONG> (Thumb, 686 bytes, Stack size 0 bytes, stepperthread.o(i.StepperControl))
+<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = StepperControl &rArr; driverShutdown &rArr; setPWM3 &rArr; HAL_TIM_PWM_ConfigChannel &rArr; TIM_OC2_SetConfig
 </UL>
 <BR>[Calls]<UL><LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;strainShutdown
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
@@ -1066,7 +1066,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[cb]"></a>driverShutdown</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, drivemotorthread.o(i.driverShutdown))
-<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = driverShutdown &rArr; setPWM3 &rArr; HAL_TIM_PWM_ConfigChannel &rArr; TIM_OC4_SetConfig
+<BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = driverShutdown &rArr; setPWM3 &rArr; HAL_TIM_PWM_ConfigChannel &rArr; TIM_OC2_SetConfig
 </UL>
 <BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setPWM3
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setPWM2
@@ -1814,7 +1814,7 @@ Global Symbols
 Local Symbols
 </H3>
 <P><STRONG><a name="[87]"></a>setPWM1</STRONG> (Thumb, 40 bytes, Stack size 40 bytes, drivemotorthread.o(i.setPWM1))
-<BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = setPWM1 &rArr; HAL_TIM_PWM_ConfigChannel &rArr; TIM_OC4_SetConfig
+<BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = setPWM1 &rArr; HAL_TIM_PWM_ConfigChannel &rArr; TIM_OC2_SetConfig
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_Start
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_ConfigChannel
@@ -1824,7 +1824,7 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[88]"></a>setPWM2</STRONG> (Thumb, 40 bytes, Stack size 40 bytes, drivemotorthread.o(i.setPWM2))
-<BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = setPWM2 &rArr; HAL_TIM_PWM_ConfigChannel &rArr; TIM_OC4_SetConfig
+<BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = setPWM2 &rArr; HAL_TIM_PWM_ConfigChannel &rArr; TIM_OC2_SetConfig
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_Start
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_ConfigChannel
@@ -1834,7 +1834,7 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[89]"></a>setPWM3</STRONG> (Thumb, 40 bytes, Stack size 40 bytes, drivemotorthread.o(i.setPWM3))
-<BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = setPWM3 &rArr; HAL_TIM_PWM_ConfigChannel &rArr; TIM_OC4_SetConfig
+<BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = setPWM3 &rArr; HAL_TIM_PWM_ConfigChannel &rArr; TIM_OC2_SetConfig
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_Start
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_ConfigChannel
@@ -1894,6 +1894,31 @@ Local Symbols
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Error_Handler
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[49]"></a>ADC_DMAConvCplt</STRONG> (Thumb, 110 bytes, Stack size 16 bytes, stm32f4xx_hal_adc.o(i.ADC_DMAConvCplt))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = ADC_DMAConvCplt
+</UL>
+<BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_ConvCpltCallback
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> stm32f4xx_hal_adc.o(i.HAL_ADC_Start_DMA)
+</UL>
+<P><STRONG><a name="[4b]"></a>ADC_DMAError</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, stm32f4xx_hal_adc.o(i.ADC_DMAError))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = ADC_DMAError
+</UL>
+<BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_ErrorCallback
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> stm32f4xx_hal_adc.o(i.HAL_ADC_Start_DMA)
+</UL>
+<P><STRONG><a name="[4a]"></a>ADC_DMAHalfConvCplt</STRONG> (Thumb, 14 bytes, Stack size 16 bytes, stm32f4xx_hal_adc.o(i.ADC_DMAHalfConvCplt))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = ADC_DMAHalfConvCplt
+</UL>
+<BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_ConvHalfCpltCallback
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> stm32f4xx_hal_adc.o(i.HAL_ADC_Start_DMA)
+</UL>
+<P><STRONG><a name="[8e]"></a>ADC_Init</STRONG> (Thumb, 362 bytes, Stack size 0 bytes, stm32f4xx_hal_adc.o(i.ADC_Init))
+<BR><BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_Init
 </UL>
 
 <P><STRONG><a name="[9f]"></a>NVIC_GetPriorityGrouping</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f4xx_hal_cortex.o(i.NVIC_GetPriorityGrouping))
@@ -1999,31 +2024,6 @@ Local Symbols
 
 <P><STRONG><a name="[be]"></a>UART_Transmit_IT</STRONG> (Thumb, 104 bytes, Stack size 0 bytes, stm32f4xx_hal_uart.o(i.UART_Transmit_IT))
 <BR><BR>[Called By]<UL><LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
-</UL>
-
-<P><STRONG><a name="[49]"></a>ADC_DMAConvCplt</STRONG> (Thumb, 110 bytes, Stack size 16 bytes, stm32f4xx_hal_adc.o(i.ADC_DMAConvCplt))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = ADC_DMAConvCplt
-</UL>
-<BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_ConvCpltCallback
-</UL>
-<BR>[Address Reference Count : 1]<UL><LI> stm32f4xx_hal_adc.o(i.HAL_ADC_Start_DMA)
-</UL>
-<P><STRONG><a name="[4b]"></a>ADC_DMAError</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, stm32f4xx_hal_adc.o(i.ADC_DMAError))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = ADC_DMAError
-</UL>
-<BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_ErrorCallback
-</UL>
-<BR>[Address Reference Count : 1]<UL><LI> stm32f4xx_hal_adc.o(i.HAL_ADC_Start_DMA)
-</UL>
-<P><STRONG><a name="[4a]"></a>ADC_DMAHalfConvCplt</STRONG> (Thumb, 14 bytes, Stack size 16 bytes, stm32f4xx_hal_adc.o(i.ADC_DMAHalfConvCplt))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = ADC_DMAHalfConvCplt
-</UL>
-<BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_ConvHalfCpltCallback
-</UL>
-<BR>[Address Reference Count : 1]<UL><LI> stm32f4xx_hal_adc.o(i.HAL_ADC_Start_DMA)
-</UL>
-<P><STRONG><a name="[8e]"></a>ADC_Init</STRONG> (Thumb, 362 bytes, Stack size 0 bytes, stm32f4xx_hal_adc.o(i.ADC_Init))
-<BR><BR>[Called By]<UL><LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_ADC_Init
 </UL>
 
 <P><STRONG><a name="[111]"></a>rt_id2obj</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, rt_cmsis.o(i.rt_id2obj))

@@ -3,13 +3,13 @@
   * File Name          : StepperThread.c
   * Description        : Stepper Control Code
 	* User Code by			 : Luke Jackson, Sulaymaan Shaikh
-	* Version						 : 0.2
-	*
+	* Version						 : 0.3
 	* Changelog:
 	*						0.3:
-	*							- Reviewed and corrected stepper pins (again)
+	*							- Reviewed and corrected stepper pins
 	*						0.2:
 	*							- Corrected Pins
+	*							- Amended logic for retract routine
 	*						0.1:
 	*							- Added Thread Init Code
 	*							- Integrated Luke+Sully Stepper Motor Drive code
@@ -67,7 +67,7 @@ void StepperControl (void const *argument)
 		if (pigShutdown)
 		{
 			//Retract Legs until minimum limit switches pressed
-		 while (!limit1 & !limit2 & !limit4)
+		 while (limit1 & limit2 & limit4)
 		 {
 			switch (state) 
 			{

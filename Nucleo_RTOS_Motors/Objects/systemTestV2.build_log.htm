@@ -27,20 +27,140 @@ Project File Date:  05/22/2018
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 3 (build 300)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
-compiling adcDmaThread.c...
-compiling StrainGaugeThread.c...
-StrainGaugeThread.c(81): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  		if((aveStrain > (prevStrain*1.1))&&(aveStrain < (prevStrain*0.90)))
-StrainGaugeThread.c(81): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  		if((aveStrain > (prevStrain*1.1))&&(aveStrain < (prevStrain*0.90)))
-StrainGaugeThread.c(85): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  		else if (aveStrain < (prevStrain*1.1))
-StrainGaugeThread.c(89): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-  		else if (aveStrain > (prevStrain*0.9))
-StrainGaugeThread.c: 4 warnings, 0 errors
+compiling CommsDecodeThread.c...
+compiling StepperThread.c...
+StepperThread.c(76): warning:  #188-D: enumerated type mixed with another type
+  					HAL_GPIO_WritePin(
+PIOB, 
+PIO_PIN_6, 1); 
+StepperThread.c(77): warning:  #188-D: enumerated type mixed with another type
+  					HAL_GPIO_WritePin(
+PIOC, 
+PIO_PIN_9, 0);
+StepperThread.c(78): warning:  #188-D: enumerated type mixed with another type
+  					HAL_GPIO_WritePin(
+PIOC, 
+PIO_PIN_8, 1);
+StepperThread.c(79): warning:  #188-D: enumerated type mixed with another type
+  					HAL_GPIO_WritePin(
+PIOC, 
+PIO_PIN_7, 0);
+StepperThread.c(86): warning:  #188-D: enumerated type mixed with another type
+  					HAL_GPIO_WritePin(
+PIOB, 
+PIO_PIN_6, 0);
+StepperThread.c(87): warning:  #188-D: enumerated type mixed with another type
+  					HAL_GPIO_WritePin(
+PIOC, 
+PIO_PIN_9, 1);
+StepperThread.c(88): warning:  #188-D: enumerated type mixed with another type
+  					HAL_GPIO_WritePin(
+PIOC, 
+PIO_PIN_8, 1);
+StepperThread.c(89): warning:  #188-D: enumerated type mixed with another type
+  					HAL_GPIO_WritePin(
+PIOC, 
+PIO_PIN_7, 0);
+StepperThread.c(96): warning:  #188-D: enumerated type mixed with another type
+  					HAL_GPIO_WritePin(
+PIOB, 
+PIO_PIN_6, 0);
+StepperThread.c(97): warning:  #188-D: enumerated type mixed with another type
+  					HAL_GPIO_WritePin(
+PIOC, 
+PIO_PIN_9, 1);
+StepperThread.c(98): warning:  #188-D: enumerated type mixed with another type
+  					HAL_GPIO_WritePin(
+PIOC, 
+PIO_PIN_8, 0);
+StepperThread.c(99): warning:  #188-D: enumerated type mixed with another type
+  					HAL_GPIO_WritePin(
+PIOC, 
+PIO_PIN_7, 1);
+StepperThread.c(106): warning:  #188-D: enumerated type mixed with another type
+  					HAL_GPIO_WritePin(
+PIOB, 
+PIO_PIN_6, 1);
+StepperThread.c(107): warning:  #188-D: enumerated type mixed with another type
+  					HAL_GPIO_WritePin(
+PIOC, 
+PIO_PIN_9, 0);
+StepperThread.c(108): warning:  #188-D: enumerated type mixed with another type
+  					HAL_GPIO_WritePin(
+PIOC, 
+PIO_PIN_8, 0);
+StepperThread.c(109): warning:  #188-D: enumerated type mixed with another type
+  					HAL_GPIO_WritePin(
+PIOC, 
+PIO_PIN_7, 1);
+StepperThread.c(157): warning:  #188-D: enumerated type mixed with another type
+  					HAL_GPIO_WritePin(
+PIOB, 
+PIO_PIN_6, 1); 
+StepperThread.c(158): warning:  #188-D: enumerated type mixed with another type
+  					HAL_GPIO_WritePin(
+PIOC, 
+PIO_PIN_9, 0);
+StepperThread.c(159): warning:  #188-D: enumerated type mixed with another type
+  					HAL_GPIO_WritePin(
+PIOC, 
+PIO_PIN_8, 1);
+StepperThread.c(160): warning:  #188-D: enumerated type mixed with another type
+  					HAL_GPIO_WritePin(
+PIOC, 
+PIO_PIN_7, 0);
+StepperThread.c(167): warning:  #188-D: enumerated type mixed with another type
+  					HAL_GPIO_WritePin(
+PIOB, 
+PIO_PIN_6, 0);
+StepperThread.c(168): warning:  #188-D: enumerated type mixed with another type
+  					HAL_GPIO_WritePin(
+PIOC, 
+PIO_PIN_9, 1);
+StepperThread.c(169): warning:  #188-D: enumerated type mixed with another type
+  					HAL_GPIO_WritePin(
+PIOC, 
+PIO_PIN_8, 1);
+StepperThread.c(170): warning:  #188-D: enumerated type mixed with another type
+  					HAL_GPIO_WritePin(
+PIOC, 
+PIO_PIN_7, 0);
+StepperThread.c(177): warning:  #188-D: enumerated type mixed with another type
+  					HAL_GPIO_WritePin(
+PIOB, 
+PIO_PIN_6, 0);
+StepperThread.c(178): warning:  #188-D: enumerated type mixed with another type
+  					HAL_GPIO_WritePin(
+PIOC, 
+PIO_PIN_9, 1);
+StepperThread.c(179): warning:  #188-D: enumerated type mixed with another type
+  					HAL_GPIO_WritePin(
+PIOC, 
+PIO_PIN_8, 0);
+StepperThread.c(180): warning:  #188-D: enumerated type mixed with another type
+  					HAL_GPIO_WritePin(
+PIOC, 
+PIO_PIN_7, 1);
+StepperThread.c(187): warning:  #188-D: enumerated type mixed with another type
+  					HAL_GPIO_WritePin(
+PIOB, 
+PIO_PIN_6, 1);
+StepperThread.c(188): warning:  #188-D: enumerated type mixed with another type
+  					HAL_GPIO_WritePin(
+PIOC, 
+PIO_PIN_9, 0);
+StepperThread.c(189): warning:  #188-D: enumerated type mixed with another type
+  					HAL_GPIO_WritePin(
+PIOC, 
+PIO_PIN_8, 0);
+StepperThread.c(190): warning:  #188-D: enumerated type mixed with another type
+  					HAL_GPIO_WritePin(
+PIOC, 
+PIO_PIN_7, 1);
+StepperThread.c: 32 warnings, 0 errors
 linking...
-Program Size: Code=20180 RO-data=764 RW-data=204 ZI-data=5636  
-".\Objects\systemTestV2.axf" - 0 Error(s), 4 Warning(s).
+Program Size: Code=20156 RO-data=764 RW-data=204 ZI-data=5636  
+".\Objects\systemTestV2.axf" - 0 Error(s), 32 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -49,24 +169,24 @@ Package Vendor: ARM
                 ::CMSIS:RTOS:1.0 (API)
                 CMSIS (Cortex Microcontroller Software Interface Standard)
    * Component: RTOS Version: 1.0
-   * Component: CORE Version: 4.3.0
    * Component: Keil RTX Version: 4.80.0
+   * Component: CORE Version: 4.3.0
 
 Package Vendor: Keil
                 http://www.keil.com/pack/Keil.STM32F4xx_DFP.2.10.0.pack
-                Keil::Device:Startup:2.5.0
+                Keil::Device:STM32Cube HAL:Common:1.5.0
                 STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
-   * Component: Startup Version: 2.5.0
-   * Component: STM32Cube Framework Version: 1.0.0
    * Component: Common Version: 1.5.0
-   * Component: Cortex Version: 1.5.0
    * Component: ADC Version: 1.5.0
-   * Component: DMA Version: 1.5.0
+   * Component: Cortex Version: 1.5.0
    * Component: GPIO Version: 1.5.0
+   * Component: DMA Version: 1.5.0
+   * Component: PWR Version: 1.5.0
    * Component: RCC Version: 1.5.0
    * Component: TIM Version: 1.5.0
    * Component: UART Version: 1.5.0
-   * Component: PWR Version: 1.5.0
+   * Component: Startup Version: 2.5.0
+   * Component: STM32Cube Framework Version: 1.0.0
 
 Package Vendor: Keil
                 project-path/Keil.FrameworkCubeMX.1.0.0.pack
@@ -88,53 +208,48 @@ Package Vendor: Keil
 
    * Component: ::CMSIS:RTOS:1.0 (API)
 
-   * Component: ARM::CMSIS:CORE:4.3.0
-
    * Component: ARM::CMSIS:RTOS:Keil RTX:4.80.0
       Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\MailQueue.c
-      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\MemPool.c
-      Source file:   CMSIS\RTOS\RTX\Templates\RTX_Conf_CM.c
+      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\Mutex.c
       Include file:  CMSIS\RTOS\RTX\UserCodeTemplates\osObjects.h
       Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\main.c
-      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\Mutex.c
-      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\Semaphore.c
-      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\Thread.c
-      Include file:  CMSIS\RTOS\RTX\INC\cmsis_os.h
+      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\MemPool.c
       Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\Timer.c
       Source file:   CMSIS\RTOS\RTX\SRC\ARM\SVC_Table.s
+      Include file:  CMSIS\RTOS\RTX\INC\cmsis_os.h
+      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\Thread.c
+      Source file:   CMSIS\RTOS\RTX\Templates\RTX_Conf_CM.c
       Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\MsgQueue.c
+      Source file:   CMSIS\RTOS\RTX\UserCodeTemplates\Semaphore.c
       Library file:  CMSIS\RTOS\RTX\LIB\ARM\RTX_CM4.lib
 
-   * Component: Keil::Device:Startup:2.5.0
-      Include file:  Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
-      Source file:   Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\arm\startup_stm32f401xe.s
-      Source file:   MDK\Device\Source\ARM\STM32F401xx_OPT.s
-      Source file:   MDK\Device\Source\ARM\STM32F4xx_OTP.s
-      Source file:   Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c
-
-   * Component: ::Device:STM32Cube Framework:1.0.0 (API)
+   * Component: ARM::CMSIS:CORE:4.3.0
 
    * Component: Keil::Device:STM32Cube HAL:Common:1.5.0
-      Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c
       Include file:  Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h
-
-   * Component: Keil::Device:STM32Cube HAL:Cortex:1.5.0
-      Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.c
+      Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c
 
    * Component: Keil::Device:STM32Cube HAL:ADC:1.5.0
       Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc.c
       Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_adc_ex.c
 
-   * Component: Keil::Device:STM32Cube HAL:DMA:1.5.0
-      Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma.c
-      Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma_ex.c
+   * Component: Keil::Device:STM32Cube HAL:Cortex:1.5.0
+      Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.c
 
    * Component: Keil::Device:STM32Cube HAL:GPIO:1.5.0
       Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.c
 
+   * Component: Keil::Device:STM32Cube HAL:DMA:1.5.0
+      Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma_ex.c
+      Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma.c
+
+   * Component: Keil::Device:STM32Cube HAL:PWR:1.5.0
+      Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr_ex.c
+      Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr.c
+
    * Component: Keil::Device:STM32Cube HAL:RCC:1.5.0
-      Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.c
       Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc_ex.c
+      Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.c
 
    * Component: Keil::Device:STM32Cube HAL:TIM:1.5.0
       Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.c
@@ -143,15 +258,20 @@ Package Vendor: Keil
    * Component: Keil::Device:STM32Cube HAL:UART:1.5.0
       Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_uart.c
 
-   * Component: Keil::Device:STM32Cube HAL:PWR:1.5.0
-      Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr_ex.c
-      Source file:   Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr.c
+   * Component: Keil::Device:Startup:2.5.0
+      Source file:   Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\arm\startup_stm32f401xe.s
+      Source file:   MDK\Device\Source\ARM\STM32F4xx_OTP.s
+      Include file:  Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
+      Source file:   MDK\Device\Source\ARM\STM32F401xx_OPT.s
+      Source file:   Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c
+
+   * Component: ::Device:STM32Cube Framework:1.0.0 (API)
 
    * Component: Keil::Device:STM32Cube Framework:STM32CubeMX:1.0.0
+      Include file:  MX_Device.h
       Include file:  STCubeGenerated\Inc\stm32f4xx_hal_conf.h
       Source file:   STCubeGenerated\Src\stm32f4xx_hal_msp.c
-      Include file:  MX_Device.h
-Build Time Elapsed:  00:00:05
+Build Time Elapsed:  00:00:06
 </pre>
 </body>
 </html>

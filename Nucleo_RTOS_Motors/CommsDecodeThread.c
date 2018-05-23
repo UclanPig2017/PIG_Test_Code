@@ -3,9 +3,11 @@
   * File Name          : CommmsDecodeThread.c
   * Description        : Decoding Commands received via UART
 	* User Code by			 : Sulaymaan Shaikh
-	* Version						 : 0.2
+	* Version						 : 0.3
 	*
 	* Changelog:
+	*						0.3:
+	*							- Set pigDir to 0 for shutting down drive motors
 	*						0.2:
 	*							- Added Decode and variable setting for drive motors
 	*						0.1:
